@@ -1,0 +1,24 @@
+.event-card{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1em;
+}
+
+.event-card > p{
+  margin-bottom: 0;
+}
+
+.event-date{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: black;
+  border-radius: 8px;
+  margin-right: 1em;
+  height: 3.5em;
+  width: 5.5em;
+}
+
+.location{
+  margin-bottom: 0;
+}
