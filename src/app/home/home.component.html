@@ -8,30 +8,44 @@
 
 
     <div class="container-fluid">
-    <div class="h-30">
-      <h3 class="p-3">Upcoming Event <nb-icon icon="arrow-forward-outline"></nb-icon></h3>
-      <div class="row gx-2">
-        <div class="col-sm-2">
-          <nb-card size="">
-            <nb-card-body>
-              <div class="event-card">
-                <div class="event-date">
-                  <h6 class="text-white mb-0 mt-1">20</h6>
-                  <p class="text-white mb-1 ">Nov</p>
+      <div class="h-30">
+        <h3 class="p-3">Upcoming Event
+          <nb-icon icon="arrow-forward-outline"></nb-icon>
+        </h3>
+        <div class="row gx-2">
+          <div class="col-sm-2" *ngFor="let x of [0,0,0,0,0,0,0,0,0,0]">
+            <nb-card>
+              <nb-card-body>
+                <div class="event-card">
+                  <div class="event-date">
+                    <h6 class="text-white mb-0 mt-1">20</h6>
+                    <p class="text-white mb-1 ">Nov</p>
+                  </div>
+                  <h6>Halloween Part for the singles</h6>
                 </div>
-                <h6>Halloween Part for the singles</h6>
-              </div>
-              <p class="location text-muted"><nb-icon icon="pin-outline"></nb-icon> Memorial Library</p>
-            </nb-card-body>
-          </nb-card>
+                <p class="location text-muted">
+                  <nb-icon icon="pin-outline"></nb-icon>
+                  Memorial Library
+                </p>
+              </nb-card-body>
+            </nb-card>
+          </div>
+
+
         </div>
-
-
-
       </div>
-    </div>
       <div class="h-70 bg-white">
-        <h3 class="p-3">Upcoming Event <nb-icon icon="arrow-forward-outline"></nb-icon></h3>
+        <div class="events-jumbo">
+            <h2>Halloween Part for <br>the singles</h2>
+
+            <p>
+              <nb-icon icon="clock-outline"></nb-icon>
+              <span class="mr-5">20 Nov 2022 at 11:00pm</span>
+              <nb-icon icon="pin-outline"></nb-icon>
+              <span class="mr-4">Memorial Library</span>
+            </p>
+
+          </div>
       </div>
 
     </div>
