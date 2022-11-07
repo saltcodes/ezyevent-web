@@ -5,8 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {NbThemeModule, NbLayoutModule, NbIconModule, NbCardModule} from '@nebular/theme';
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbIconModule,
+  NbCardModule,
+  NbFormFieldModule,
+  NbButtonModule, NbInputModule
+} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,7 +29,12 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbLayoutModule,
     NbEvaIconsModule,
     NbIconModule,
-    NbCardModule
+    NbCardModule,
+    NbFormFieldModule,
+    NbButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NbInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
