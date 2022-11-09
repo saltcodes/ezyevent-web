@@ -52,6 +52,9 @@ export class HomeComponent implements OnInit {
       center: [lng, lat]
     })
 
+    this.isMap = false;
+
+
 
     this.map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
@@ -61,14 +64,12 @@ export class HomeComponent implements OnInit {
       showUserHeading: true
     }));
 
-      this.isMap = false;
+
 
     this.events?.forEach(e=>{
       new mapboxgl.Marker({ color: 'black'})
         .setLngLat([e.location.coordinates[1], e.location.coordinates[0]])
         .addTo(this.map);
     })
-
-
   }
 }
