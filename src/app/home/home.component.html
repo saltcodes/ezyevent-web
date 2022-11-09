@@ -1,7 +1,14 @@
 <nb-layout>
 
   <nb-layout-header fixed>
-    <!-- Insert header here -->
+    <div class=" w-100">
+      <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2 d-flex justify-content-end">
+          <nb-user name="Johnson" title="Software Engineer"></nb-user>
+        </div>
+      </div>
+    </div>
   </nb-layout-header>
 
   <nb-layout-column>
@@ -11,9 +18,12 @@
 
       <div class="row">
         <div class="col-sm-9 rounded">
-          <div class="map rounded mappy" id="map"></div>
+         <nb-card [nbSpinner]="isMap">
+           <div class="map rounded mappy" id="map"></div>
+         </nb-card>
         </div>
-        <div class="col-sm-3 bg-white rounded">
+
+        <div class="col-sm-3 bg-white rounded" [nbSpinner]="isDataLoading">
 
           <nb-form-field class="mt-4">
             <input type="text" nbInput fullWidth>
@@ -26,34 +36,33 @@
             <nb-icon icon="arrow-forward-outline"></nb-icon>
           </h3>
           <div class="row gx-2">
-            <div  *ngFor="let event of events; index as i">
-              <nb-card (click)="clickEvent(i)">
+            <div  *ngFor="let event of events ">
+              <nb-card (click)="clickEvent(event)">
                 <nb-card-body>
                   <div class="event-card">
-                    <div class="event-date">
-                      <h6 class="text-white mb-0 mt-1">{{ event.Day }}</h6>
-                      <p class="text-white mb-1 "> {{ event.month }} </p>
+                    <div>
+                      <div class="event-date">
+                        <h6 class="text-white mb-0 mt-1">{{ event.date | date : 'd' }}</h6>
+                        <p class="text-white mb-1 "> {{ event.date | date: 'MMM' }} </p>
+                      </div>
                     </div>
-                    <h6> {{ event.name }} </h6>
+                    <div>
+                      <h6> {{ event.name }} </h6>
+                      <nb-tag text="{{ event.type }}" size="tiny"></nb-tag>
+                    </div>
+
                   </div>
                   <p class="location text-muted">
                     <nb-icon icon="pin-outline"></nb-icon>
-                    {{ event.location }}
+                    {{ event.locationName }}
                   </p>
                 </nb-card-body>
               </nb-card>
             </div>
-
-
           </div>
         </div>
-
       </div>
 
-      <div class="h-30">
-
-
-      </div>
 
 <!--      <div class="h-70 bg-white">-->
 <!--        <div class="events-jumbo">-->
@@ -71,9 +80,5 @@
 
     </div>
   </nb-layout-column>
-
-  <nb-layout-footer fixed>
-    <!-- Insert footer here -->
-  </nb-layout-footer>
 
 </nb-layout>

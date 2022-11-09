@@ -11,10 +11,11 @@ import {
   NbIconModule,
   NbCardModule,
   NbFormFieldModule,
-  NbButtonModule, NbInputModule
+  NbButtonModule, NbInputModule, NbTagModule, NbUserModule, NbSpinnerModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     NbButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    NbInputModule
+    NbInputModule,
+    NbTagModule,
+    HttpClientModule,
+    NbUserModule,
+    NbSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

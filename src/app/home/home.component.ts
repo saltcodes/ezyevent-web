@@ -1,61 +1,74 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
+
 // @ts-ignore
 import mapboxgl from 'mapbox-gl';
 import {environment} from "../../environments/environment";
+import {EventModel} from "../models/event.model";
+import {DataServiceService} from "../services/data-service.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit,AfterViewInit {
+export class HomeComponent implements OnInit {
 
   map: mapboxgl.Map
-  events = [
-    {name: "Hollwen Party", Day : 6, month: "Nov", location: "CSU"},
-    {name: "Book Club Lunch", Day : 20, month: "Oct", location: "Front Desk"},
-    {name: "Free Movie Show", Day : 11, month: "Jan", location: "Campus Hub"},
-    {name: "CADSCOM 2022", Day : 16, month: "Mar", location: "In the snow"},
-    {name: "Beunch for Techies", Day : 21, month: "JUN", location: "Parking Lot 5"},
-    {name: "Jazz Dancing Lessons", Day : 31, month: "APR", location: "In your house?"},
-    {name: "Bee movie free show", Day : 5, month: "JUL", location: "In the middle of the lake"},
-  ]
+  events: EventModel[] | undefined = []
+  isMap = true
+  isDataLoading = true
 
-  eventObject :any | undefined = {}
-  constructor() { }
+
+  eventObject: any | undefined = {}
+
+  constructor(private dataService: DataServiceService) {
+  }
+
+  getEvents() {
+    this.dataService.getEventsFrom(0, 0).subscribe(rpx => {
+        this.events = rpx.data
+      this.isDataLoading = false
+        this.initiateMap(44.14619841204489, -93.99743536082856)
+      }
+    )
+  }
+
 
   ngOnInit(): void {
     mapboxgl.accessToken = environment.mapbox.accessToken
+    this.getEvents();
   }
 
-
-
-  clickEvent(index:any){
-    this.eventObject = this.events[index]
+  clickEvent(event: EventModel) {
+    this.eventObject = event
   }
 
-  ngAfterViewInit(): void {
-
-    navigator.geolocation.getCurrentPosition((location)=>{
-        this.initiateMap(location.coords.longitude,location.coords.latitude)
-    },(err)=>{
-      alert('Location permissions need to be accessed for this feature')
-      this.initiateMap(50,50)
-
-    })
-
-
-  }
-
-
-  initiateMap(lng: any,lat: any,){
-    console.log(lat,lng)
+  initiateMap(lat: any, lng: any,) {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/johnyoat/cl7xnvxev002614pfwczwqnvt',
-      zoom: 14,
-      center: [lng,lat]
+      zoom: 16,
+      center: [lng, lat]
     })
-  }
 
+
+    this.map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      showUserHeading: true
+    }));
+
+      this.isMap = false;
+
+    this.events?.forEach(e=>{
+      new mapboxgl.Marker({ color: 'black'})
+        .setLngLat([e.location.coordinates[1], e.location.coordinates[0]])
+        .addTo(this.map);
+    })
+
+
+  }
 }
