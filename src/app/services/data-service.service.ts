@@ -8,7 +8,7 @@ import {EventModel} from "../models/event.model";
 })
 export class DataServiceService {
 
-  BASE_URL = "http://35.239.194.89:8081"
+  BASE_URL = "http://34.27.210.184:8081"
 
   constructor(private http:HttpClient) {
 
