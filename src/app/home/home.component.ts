@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 
 // @ts-ignore
 import mapboxgl from 'mapbox-gl';
@@ -6,6 +6,8 @@ import {environment} from "../../environments/environment";
 import {EventModel} from "../models/event.model";
 import {DataServiceService} from "../services/data-service.service";
 import {Observable} from "rxjs";
+import {NbWindowService} from "@nebular/theme";
+import {Result} from "../models/person.model";
 
 @Component({
   selector: 'app-home',
@@ -18,11 +20,12 @@ export class HomeComponent implements OnInit {
   events: EventModel[] | undefined = []
   isMap = true
   isDataLoading = true
+  attendees?: Result[]
+  eventObject: EventModel | undefined
+  // @ts-ignore
+  @ViewChild('eventModal') eventModal: TemplateRef<any>
 
-
-  eventObject: any | undefined = {}
-
-  constructor(private dataService: DataServiceService) {
+  constructor(private dataService: DataServiceService, private window:NbWindowService) {
   }
 
   getEvents() {
@@ -35,13 +38,21 @@ export class HomeComponent implements OnInit {
   }
 
 
+  openEvent(event:EventModel){
+    this.eventObject = event
+    this.window.open(this.eventModal,{
+      title: this.eventObject.name,
+      context: this.eventObject.details
+    })
+
+    this.dataService.getAttendees().subscribe(data=>{
+      this.attendees = data.results
+    })
+  }
+
   ngOnInit(): void {
     mapboxgl.accessToken = environment.mapbox.accessToken
     this.getEvents();
-  }
-
-  clickEvent(event: EventModel) {
-    this.eventObject = event
   }
 
   initiateMap(lat: any, lng: any,) {

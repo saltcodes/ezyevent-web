@@ -18,16 +18,16 @@
 
       <div class="row">
         <div class="col-sm-9 rounded">
-         <nb-card [nbSpinner]="isMap">
-           <div class="map rounded mappy" id="map"></div>
-         </nb-card>
+          <nb-card [nbSpinner]="isMap">
+            <div class="map rounded mappy" id="map"></div>
+          </nb-card>
         </div>
 
-        <div class="col-sm-3 bg-white rounded" [nbSpinner]="isDataLoading">
+        <div class="col-sm-3 bg-white rounded event-list-container" [nbSpinner]="isDataLoading">
 
           <nb-form-field class="mt-4">
             <input type="text" nbInput fullWidth>
-            <button nbSuffix nbButton ghost >
+            <button nbSuffix nbButton ghost>
               <nb-icon icon="search-outline"></nb-icon>
             </button>
           </nb-form-field>
@@ -35,9 +35,9 @@
           <h3 class="p-3">Upcoming Event
             <nb-icon icon="arrow-forward-outline"></nb-icon>
           </h3>
-          <div class="row gx-2">
-            <div  *ngFor="let event of events ">
-              <nb-card (click)="clickEvent(event)">
+          <div class="row gx-2 event-list">
+            <div *ngFor="let event of events ">
+              <nb-card (click)="openEvent(event)">
                 <nb-card-body>
                   <div class="event-card">
                     <div>
@@ -64,19 +64,46 @@
       </div>
 
 
-<!--      <div class="h-70 bg-white">-->
-<!--        <div class="events-jumbo">-->
-<!--            <h2> {{ eventObject.name }}</h2>-->
+      <ng-template #eventModal>
 
-<!--            <p>-->
-<!--              <nb-icon icon="clock-outline"></nb-icon>-->
-<!--              <span class="mr-5">{{ eventObject.Day }} {{ eventObject.month }} at 11:00pm</span>-->
-<!--              <nb-icon icon="pin-outline"></nb-icon>-->
-<!--              <span class="mr-4">{{ eventObject.location }}</span>-->
-<!--            </p>-->
+              <div class="modal-container">
+                <img [src]="eventObject?.banner" class="banner position-sticky">
 
-<!--          </div>-->
-<!--      </div>-->
+                <h2 class="mt-4 mb-4"> {{ eventObject?.name }}</h2>
+
+                <div class="row">
+                    <div class="col-sm-8 ">
+                      <div class="event-card">
+                        <div>
+                          <div class="event-date">
+                            <h6 class="text-white mb-0 mt-1">{{ eventObject?.date | date : 'd' }}</h6>
+                            <p class="text-white mb-1 "> {{ eventObject?.date | date: 'MMM' }} </p>
+                          </div>
+                        </div>
+                        <div>
+                          <h6 class="location mb-2">
+                            <nb-icon icon="pin-outline"></nb-icon>
+                            {{ eventObject?.locationName }}
+                          </h6>
+                          <nb-tag text="{{ eventObject?.type }}" size="tiny"></nb-tag>
+                        </div>
+
+                      </div>
+                      <p>{{ eventObject?.details }}</p>
+                    </div>
+
+                  <div class="col-sm-4">
+                    <h6>Attendees</h6>
+                    <nb-list class="attendees">
+                      <nb-list-item *ngFor="let attendee of attendees">
+                        <nb-user [picture]="attendee.picture.medium" name="{{ attendee.name.first }} {{ attendee.name.last }}"></nb-user>
+                      </nb-list-item>
+                    </nb-list>
+                  </div>
+
+                  </div>
+              </div>
+      </ng-template>
 
     </div>
   </nb-layout-column>

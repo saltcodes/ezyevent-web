@@ -15,4 +15,5 @@ export interface EventModel {
   typeId: string;
   type: string;
   locationName:String
+  banner:string;
 }
