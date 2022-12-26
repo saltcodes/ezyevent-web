@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     this.dataService.getEventsFrom(0, 0).subscribe(rpx => {
         this.events = rpx.data
       this.isDataLoading = false
-        this.initiateMap(44.14619841204489, -93.99743536082856)
+        this.initiateMap(-93.99743536082856,44.14619841204489, )
       }
     )
   }
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
     this.getEvents();
   }
 
-  initiateMap(lat: any, lng: any,) {
+  initiateMap(lng: any, lat: any,) {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/johnyoat/cl7xnvxev002614pfwczwqnvt',
@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
 
     this.events?.forEach(e=>{
       new mapboxgl.Marker({ color: 'black'})
-        .setLngLat([e.location.coordinates[1], e.location.coordinates[0]])
+        .setLngLat([e.location.coordinates[0], e.location.coordinates[1]])
         .addTo(this.map);
     })
   }

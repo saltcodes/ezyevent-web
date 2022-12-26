@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: ezyevent-web-ui
-          image: gcr.io/ezyevents/web-ui:v2.0
+          image: gcr.io/ezyevents/web-ui:v3.0
           imagePullPolicy: Always
           ports:
             - containerPort: 80
