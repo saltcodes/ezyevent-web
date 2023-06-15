@@ -9,11 +9,18 @@ export interface EventModel {
   summary: string;
   details: string;
   images: string[];
-  location: Location;
+  lat: number;
+  lng: number;
   price: number;
   date: number;
-  typeId: string;
-  type: string;
   locationName:String
   banner:string;
+  eventType:EventType;
+}
+
+
+export interface EventType{
+  id:string;
+  name:string;
+  icon:string;
 }

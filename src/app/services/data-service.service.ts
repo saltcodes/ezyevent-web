@@ -10,7 +10,7 @@ import {PersonResponse} from "../models/person.model";
 export class DataServiceService {
 
   // BASE_URL = "http://127.0.0.1:8000/v1/location"
-  BASE_URL = "http://127.0.0.1:8081"
+  BASE_URL = "http://127.0.0.1:8080"
 
   constructor(private http:HttpClient) {
 

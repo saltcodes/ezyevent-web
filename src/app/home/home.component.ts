@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
 
     this.events?.forEach(e=>{
       new mapboxgl.Marker({ color: 'black'})
-        .setLngLat([e.location.coordinates[0], e.location.coordinates[1]])
+        .setLngLat([e.lat, e.lng])
         .addTo(this.map);
     })
   }
