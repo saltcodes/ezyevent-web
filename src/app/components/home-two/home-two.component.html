@@ -1,0 +1,136 @@
+<nb-layout>
+
+  <nb-layout-header fixed>
+    <div class=" w-100">
+      <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2 d-flex justify-content-end">
+          <nb-user name="Johnson" title="Software Engineer"></nb-user>
+        </div>
+      </div>
+    </div>
+  </nb-layout-header>
+
+  <nb-layout-column>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-9 rounded">
+          <nb-card [nbSpinner]="isMap">
+            <div class="map rounded mappy" id="map"></div>
+          </nb-card>
+        </div>
+
+        <div class="col-sm-3 bg-white rounded event-list-container" [nbSpinner]="isDataLoading">
+
+          <nb-form-field class="mt-4">
+            <input type="text" nbInput fullWidth>
+            <button nbSuffix nbButton ghost>
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+          </nb-form-field>
+
+          <h3 class="p-3">Upcoming Event
+            <nb-icon icon="arrow-forward-outline"></nb-icon>
+          </h3>
+          <div class="row gx-2 event-list">
+            <div *ngFor="let event of events ">
+              <nb-card (click)="openEvent(event)">
+                <nb-card-body>
+                  <img [src]="event.banner" class="banner thumbnail position-sticky">
+                  <div class="event-card">
+                    <div>
+                      <div class="event-date">
+                        <h6 class="text-white mb-0 mt-1">{{ event.date | date : 'd' }}</h6>
+                        <p class="text-white mb-1 "> {{ event.date | date: 'MMM' }} </p>
+                      </div>
+                    </div>
+                    <div>
+                      <h6> {{ event.name }} </h6>
+                      <nb-tag text="{{ event.eventType.name }}" size="tiny"></nb-tag>
+                    </div>
+
+                  </div>
+                  <p class="location text-muted">
+                    <nb-icon icon="pin-outline"></nb-icon>
+                    {{ event.locationName }}
+                  </p>
+                </nb-card-body>
+                <nb-card-footer>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <button nbButton fullWidth ghost>
+                        <nb-icon icon="bookmark-outline"></nb-icon>
+                        Bookmark
+                      </button>
+                    </div>
+                    <div class="col-sm-6">
+                      <button nbButton fullWidth ghost>
+                        <nb-icon icon="person-outline"></nb-icon>
+                        Register
+                      </button>
+                    </div>
+                  </div>
+                </nb-card-footer>
+              </nb-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <ng-template #eventModal>
+
+        <div class="modal-container">
+          <img [src]="eventObject?.banner" class="banner position-sticky">
+
+          <h2 class="mt-4 mb-4"> {{ eventObject?.name }}</h2>
+
+          <div class="row">
+            <div class="col-sm-8 ">
+              <div class="event-card">
+                <div>
+                  <div class="event-date">
+                    <h6 class="text-white mb-0 mt-1">{{ eventObject?.date | date : 'd' }}</h6>
+                    <p class="text-white mb-1 "> {{ eventObject?.date | date: 'MMM' }} </p>
+                  </div>
+                </div>
+                <div>
+                  <h6 class="location mb-2">
+                    <nb-icon icon="pin-outline"></nb-icon>
+                    {{ eventObject?.locationName }}
+                  </h6>
+                  <nb-tag text="{{ eventObject?.eventType?.name }}" size="tiny"></nb-tag>
+                </div>
+
+              </div>
+              <h6 class="location mb-2">About Event</h6>
+              <p>{{ eventObject?.details }}</p>
+            </div>
+
+            <div class="col-sm-4">
+              <nb-card>
+                <nb-card-body class="text-center">
+                  <p class="mb-2">Free</p>
+                  <button nbButton status="primary" fullWidth>Register</button>
+                </nb-card-body>
+              </nb-card>
+              <h6>Attendees</h6>
+              <nb-list class="attendees">
+                <nb-list-item *ngFor="let attendee of attendees">
+                  <nb-user [picture]="attendee.picture.medium" name="{{ attendee.name.first }} {{ attendee.name.last }}"></nb-user>
+                </nb-list-item>
+              </nb-list>
+            </div>
+
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+
+  </nb-layout-column>
+
+</nb-layout>
+

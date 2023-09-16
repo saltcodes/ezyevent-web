@@ -1,17 +1,14 @@
 .event-card {
   display: flex;
   flex-direction: row;
-  margin-bottom: 1em;
-}
+  margin-bottom: 1em; }
 
 .event-row {
   overflow-x: auto;
-  white-space: nowrap;
-}
+  white-space: nowrap; }
 
 .event-card > p {
-  margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
 .event-date {
   display: flex;
@@ -21,45 +18,41 @@
   border-radius: 8px;
   margin-right: 1em;
   height: 4em;
-  width: 4em;
-}
+  width: 4em; }
 
 .location {
-  margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
-
-.banner{
+.banner {
   height: 50vh;
   width: 100%;
   border-radius: 1em;
   background-clip: border-box;
   object-fit: cover;
   background-position: center;
-  background-repeat: no-repeat;
-}
+  background-repeat: no-repeat; }
 
-.thumbnail{
+.thumbnail {
   height: 10em !important;
-  margin-bottom: 1em;
-}
+  margin-bottom: 1em; }
 
-.modal-container{
+.modal-container {
   width: 70vw;
   height: 80vh;
-  position: sticky;
-}
-.map{
+  position: sticky; }
+
+.map {
   width: 100%;
-  height: 80vh;
-}
+  height: 80vh; }
 
-.attendees{
-  height: 15em;
+.attendees {
+  height: 15em; }
 
-}
+.event-list-container {
+  height: 80vh; }
 
-.event-list-container{
-  height: 80vh;
-}
+.event-list {
+  height: 80%;
+  overflow-y: scroll; }
 
+/*# sourceMappingURL=home-two.component.css.map */
