@@ -17,6 +17,16 @@ git clone https://github.com/Johnyoat/ezy-event-deployment
 git clone https://github.com/saltcodes/ezyevent-web.git
 ```
 
+
+**3. Install dependencies**
+
+```bash
+cd ezyevent-web
+npm -i
+```
+
+
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Build
