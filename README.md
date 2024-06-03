@@ -2,13 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.9.
 
-## Development server
+## Getting Started
+
+**1. Clone the Backend server from this [repo](https://github.com/Johnyoat/ezy-event-deployment) and follow the instructions to get your 
+backend server ready.**
+
+```bash
+git clone https://github.com/Johnyoat/ezy-event-deployment
+```
+
+**2. Clone the project**
+
+```bash
+git clone https://github.com/saltcodes/ezyevent-web.git
+```
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -22,6 +31,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Contact
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For any inquiries or feedback, please contact:
+
+- Osei Yeboah Johnson - [oseiyeboahjohnson@gmail.com](mailto:oseiyeboahjohnson@gmail.com)

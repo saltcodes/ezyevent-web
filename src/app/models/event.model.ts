@@ -4,23 +4,25 @@ export interface Location {
 }
 
 export interface EventModel {
-  id: string;
-  name: string;
-  summary: string;
-  details: string;
-  images: string[];
-  lat: number;
-  lng: number;
-  price: number;
-  date: number;
-  locationName:String
-  banner:string;
-  eventType:EventType;
+  id: string
+  name: string
+  summary: string
+  details: string
+  images: string[]
+  banner: string
+  lat: number
+  lng: number
+  locationName: string
+  price: number
+  date: number
+  orgId: string
+  categoryID: string
+  category: Category
 }
 
-
-export interface EventType{
-  id:string;
-  name:string;
-  icon:string;
+export interface Category {
+  id: string
+  name: string
+  iconUrl: string
 }
+

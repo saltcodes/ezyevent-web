@@ -32,6 +32,11 @@
   background-position: center;
   background-repeat: no-repeat; }
 
+.banner-gradient {
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, black 80%);
+  padding: 1px;
+  height: 40vh !important; }
+
 .thumbnail {
   height: 10em !important;
   margin-bottom: 1em; }
@@ -42,7 +47,7 @@
   position: sticky; }
 
 .map {
-  width: 100%;
+  width: 80vw;
   height: 80vh; }
 
 .attendees {
@@ -50,5 +55,11 @@
 
 .event-list-container {
   height: 80vh; }
+
+.banner-text {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
 
 /*# sourceMappingURL=home.component.css.map */

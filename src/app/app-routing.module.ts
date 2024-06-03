@@ -4,7 +4,8 @@ import {HomeComponent} from "./home/home.component";
 import {HomeTwoComponent} from "./components/home-two/home-two.component";
 
 const routes: Routes = [
-  {component : HomeComponent, path: ''}
+  {component : HomeComponent, path: ''},
+  {component: HomeTwoComponent, path:'v2'}
 ];
 
 @NgModule({
