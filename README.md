@@ -1,4 +1,7 @@
 # EzyeventsWeb
+This (Front End) is part of a three-tier web application
+
+![screenshot](https://res.cloudinary.com/plartfomx/image/upload/v1717611740/zagtyuep1qc8cmr0ytgc.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.9.
 
@@ -24,7 +27,6 @@ git clone https://github.com/saltcodes/ezyevent-web.git
 cd ezyevent-web
 npm -i
 ```
-
 
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
