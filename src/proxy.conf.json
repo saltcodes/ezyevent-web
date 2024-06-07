@@ -1,10 +1,10 @@
 {
-  "/v1": {
-    "target": "http://ezy-event-api:8080",
+  "/api": {
+    "target": "http://3.79.105.211:8080/v1",
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {
-      "^/v1": ""
+      "^/api": ""
     }
   }
 }
