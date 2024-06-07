@@ -4,13 +4,14 @@ import {ResponseObjectModel} from "../models/responseobject.model";
 import {EventModel} from "../models/event.model";
 import {PersonResponse} from "../models/person.model";
 import {Observable} from "rxjs";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataServiceService {
 
-  BASE_URL = "http://localhost:8080/v1"
+  BASE_URL = environment.SERVER_URL
 
   constructor(private http:HttpClient) {
 
