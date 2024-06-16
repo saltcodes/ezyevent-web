@@ -65,8 +65,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     mapboxgl.accessToken = environment.mapbox.accessToken
     this.getEvents();
+    this.getLocation();
   }
 
+
+  getLocation (){
+   this.dataService.getCurrentCity().subscribe(response => {
+     this.location = response?.city
+     this.state = response?.region
+   })
+  }
 
 
   initiateMap(lng: any, lat: any,) {

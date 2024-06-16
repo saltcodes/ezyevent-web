@@ -25,4 +25,8 @@ export class DataServiceService {
   getAttendees():Observable<PersonResponse>{
     return this.http.get<PersonResponse>('https://randomuser.me/api/?results=100')
   }
+
+  getCurrentCity():Observable<any>{
+    return this.http.get('http://ipinfo.io/json')
+  }
 }
